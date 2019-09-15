@@ -25,8 +25,3 @@ for (let contract in output) {
     output[contract]
   );
 }
-
-// const campaignFactory = output[":CampaignFactory"];
-// const campaign = output[":Campaign"];
-
-// module.exports = { campaignFactory, campaign }
