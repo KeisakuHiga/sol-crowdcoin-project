@@ -29,7 +29,7 @@ class CampaignNew extends Component {
       <Layout>
         <h3>Create a Campaign</h3>
 
-        <Form onSubmit={this.onSubmit}>
+        <Form onSubmit={this.onSubmit} error={this.state.errorMessage}>
           <Form.Field>
             <label>Minimum Contribution</label>
             <Input
