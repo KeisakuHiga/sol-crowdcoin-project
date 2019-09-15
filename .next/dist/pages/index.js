@@ -12,6 +12,10 @@ var _asyncToGenerator2 = require('babel-runtime/helpers/asyncToGenerator');
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
+var _toArray2 = require('babel-runtime/helpers/toArray');
+
+var _toArray3 = _interopRequireDefault(_toArray2);
+
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
@@ -63,7 +67,23 @@ var CampaignIndex = function (_Component) {
   }
 
   (0, _createClass3.default)(CampaignIndex, [{
-    key: 'componentDidMount',
+    key: 'render',
+    value: function render() {
+      var campaigns = this.props.campaigns;
+
+      var _campaigns = (0, _toArray3.default)(campaigns),
+          first = _campaigns[0],
+          rest = _campaigns.slice(1);
+
+      return _react2.default.createElement('div', {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      }, first);
+    }
+  }], [{
+    key: 'getInitialProps',
     value: function () {
       var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
         var campaigns;
@@ -76,8 +96,7 @@ var CampaignIndex = function (_Component) {
 
               case 2:
                 campaigns = _context.sent;
-
-                console.log(campaigns);
+                return _context.abrupt('return', { campaigns: campaigns });
 
               case 4:
               case 'end':
@@ -87,26 +106,16 @@ var CampaignIndex = function (_Component) {
         }, _callee, this);
       }));
 
-      function componentDidMount() {
+      function getInitialProps() {
         return _ref2.apply(this, arguments);
       }
 
-      return componentDidMount;
+      return getInitialProps;
     }()
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement('div', {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 14
-        }
-      }, 'Campaign Index');
-    }
   }]);
 
   return CampaignIndex;
 }(_react.Component);
 
 exports.default = CampaignIndex;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiZmFjdG9yeSIsIkNhbXBhaWduSW5kZXgiLCJzdGF0ZSIsIm1ldGhvZHMiLCJnZXREZXBsb3llZENhbXBhaWducyIsImNhbGwiLCJjYW1wYWlnbnMiLCJjb25zb2xlIiwibG9nIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsQUFBTyxBQUFTOzs7O0FBQ2hCLEFBQU8sQUFBYTs7Ozs7Ozs7O0ksQUFFZDs7Ozs7Ozs7Ozs7Ozs7ME4sQUFDSixRLEFBQVE7Ozs7Ozs7Ozs7Ozs7dUJBR2tCLGtCQUFBLEFBQVEsUUFBUixBQUFnQix1QixBQUFoQixBQUF1Qzs7bUJBQXpEO0EscUNBQ047O3dCQUFBLEFBQVEsSUFBUixBQUFZOzs7Ozs7Ozs7Ozs7Ozs7Ozs7NkJBR0wsQUFDUDs2QkFDRSxjQUFBOztvQkFBQTtzQkFBQTtBQUFBO0FBQUEsT0FBQSxFQURGLEFBQ0UsQUFFSDs7Ozs7QSxBQVp5QixBQWU1Qjs7a0JBQUEsQUFBZSIsImZpbGUiOiJpbmRleC5qcz9lbnRyeSIsInNvdXJjZVJvb3QiOiIvVXNlcnMva2hpZ2E2MTkvU2l0ZXMvdWRlbXkva2lja3N0YXJ0In0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiZmFjdG9yeSIsIkNhbXBhaWduSW5kZXgiLCJzdGF0ZSIsImNhbXBhaWducyIsInByb3BzIiwiZmlyc3QiLCJyZXN0IiwibWV0aG9kcyIsImdldERlcGxveWVkQ2FtcGFpZ25zIiwiY2FsbCJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPLEFBQVM7Ozs7QUFDaEIsQUFBTyxBQUFhOzs7Ozs7Ozs7SSxBQUVkOzs7Ozs7Ozs7Ozs7OzswTixBQUNKLFEsQUFBUTs7Ozs7NkJBT0M7VUFBQSxBQUNDLFlBQWMsS0FEZixBQUNvQixNQURwQixBQUNDOzs4Q0FERCxBQUVrQjtVQUZsQixBQUVBLG1CQUZBO1VBQUEsQUFFVSx3QkFDakI7OzZCQUNFLGNBQUE7O29CQUFBO3NCQUFBLEFBQU07QUFBTjtBQUFBLE9BQUEsRUFERixBQUNFLEFBRUg7Ozs7Ozs7Ozs7Ozt1QkFWeUIsa0JBQUEsQUFBUSxRQUFSLEFBQWdCLHVCLEFBQWhCLEFBQXVDOzttQkFBekQ7QTtpREFDQyxFQUFFLFcsQUFBRjs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBLEFBTGlCLEFBaUI1Qjs7a0JBQUEsQUFBZSIsImZpbGUiOiJpbmRleC5qcz9lbnRyeSIsInNvdXJjZVJvb3QiOiIvVXNlcnMva2hpZ2E2MTkvU2l0ZXMvdWRlbXkva2lja3N0YXJ0In0=

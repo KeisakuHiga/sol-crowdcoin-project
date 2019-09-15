@@ -4,14 +4,16 @@ import factory from '../ethereum/factory';
 class CampaignIndex extends Component {
   state = {  }
 
-  async componentDidMount() {
+  static async getInitialProps() {
     const campaigns = await factory.methods.getDeployedCampaigns().call();
-    console.log(campaigns);
+    return { campaigns }; // this object will be set as the props of this class
   }
   
   render() { 
+    const { campaigns } = this.props;
+    const [first, ...rest] = campaigns
     return (
-      <div>Campaign Index</div>
+      <div>{first}</div>
     );
   }
 }
