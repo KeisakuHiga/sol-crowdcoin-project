@@ -7,7 +7,7 @@ import CampaignFactory from './build/CampaignFactory.json';
 // the 2nd argument: the contract address which is given when you deploy the contract to the Rinkeby network
 const instance = new web3.eth.Contract(
   JSON.parse(CampaignFactory.interface),
-  '0x953Ad951cF8044Fcf4a967c83ac255c8A28Dd905'
+  '0x5646DfeCC48cAe40f73d4315C665AB22D47781A5'
 );
 
 export default instance;

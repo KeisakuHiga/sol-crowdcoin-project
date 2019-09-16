@@ -30,7 +30,7 @@ contract Campaign {
     address public manager;
     uint public minimumContribution;
     mapping(address => bool) public approvers;
-    uint public contributersCount;
+    uint public contributorsCount;
     
     modifier restricted() {
         require(msg.sender == manager);
@@ -46,7 +46,7 @@ contract Campaign {
         require(msg.value > minimumContribution);
         // mapping doesn't store the address as a key, does only boolean
         approvers[msg.sender] = true;
-        contributersCount++;
+        contributorsCount++;
     }
     
     function createRequest(string description, uint value, address recipient) public restricted {
@@ -91,7 +91,7 @@ contract Campaign {
     function finalizeRequest(uint indexOfRequest) public restricted {
         Request storage request = requests[indexOfRequest];
         
-        require(request.approvalCount > (contributersCount / 2));
+        require(request.approvalCount > (contributorsCount / 2));
         require(!request.complete);
         
         request.recipient.transfer(request.value);
@@ -104,7 +104,7 @@ contract Campaign {
             minimumContribution,
             this.balance,
             requests.length,
-            contributersCount,
+            contributorsCount,
             manager
         );
     }
