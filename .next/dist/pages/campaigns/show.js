@@ -46,6 +46,14 @@ var _campaign = require('../../ethereum/campaign');
 
 var _campaign2 = _interopRequireDefault(_campaign);
 
+var _web = require('../../ethereum/web3');
+
+var _web2 = _interopRequireDefault(_web);
+
+var _ContributeForm = require('../../components/ContributeForm');
+
+var _ContributeForm2 = _interopRequireDefault(_ContributeForm);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/khiga619/Sites/udemy/kickstart/pages/campaigns/show.js?entry';
@@ -75,18 +83,35 @@ var CampaignShow = function (_Component) {
           balance = _props.balance,
           manager = _props.manager,
           minimumContribution = _props.minimumContribution,
-          contributorsCount = _props.contributorsCount;
+          contributorsCount = _props.contributorsCount,
+          requestsCount = _props.requestsCount;
 
       var items = [{
         header: manager,
         meta: 'Address of Manager',
         description: 'The manager created this campaign and can create requests to withdraw money',
         style: { overflowWrap: 'break-word' }
+      }, {
+        header: minimumContribution,
+        meta: 'Minimum Contribution (wei)',
+        description: 'You must contribute at least this much wei to become a contributor'
+      }, {
+        header: requestsCount,
+        meta: 'Number of Requests',
+        description: 'A request tries to withdraw money from the contract. Requests must be approved by contributors.'
+      }, {
+        header: contributorsCount,
+        meta: 'Number of contributors',
+        description: 'Number of people who have already donated to this campaign'
+      }, {
+        header: _web2.default.utils.fromWei(balance, 'ether'),
+        meta: 'Campaign Balance (ether)',
+        description: 'The balance is how much money this campaign has left to spend.'
       }];
 
       return _react2.default.createElement(_semanticUiReact.Card.Group, { items: items, __source: {
           fileName: _jsxFileName,
-          lineNumber: 38
+          lineNumber: 61
         }
       });
     }
@@ -96,14 +121,32 @@ var CampaignShow = function (_Component) {
       return _react2.default.createElement(_Layout2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 66
         }
       }, _react2.default.createElement('h3', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 67
         }
-      }, 'Campaign Shows'), this.renderCards());
+      }, 'Campaign Shows'), _react2.default.createElement(_semanticUiReact.Grid, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 68
+        }
+      }, _react2.default.createElement(_semanticUiReact.Grid.Column, { width: 10, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69
+        }
+      }, this.renderCards()), _react2.default.createElement(_semanticUiReact.Grid.Column, { width: 6, __source: {
+          fileName: _jsxFileName,
+          lineNumber: 73
+        }
+      }, _react2.default.createElement(_ContributeForm2.default, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 74
+        }
+      }))));
     }
   }], [{
     key: 'getInitialProps',
@@ -123,7 +166,7 @@ var CampaignShow = function (_Component) {
                 return _context.abrupt('return', {
                   minimumContribution: summary[0],
                   balance: summary[1],
-                  requestCount: summary[2],
+                  requestsCount: summary[2],
                   contributorsCount: summary[3],
                   manager: summary[4]
                 });
@@ -148,4 +191,4 @@ var CampaignShow = function (_Component) {
 }(_react.Component);
 
 exports.default = CampaignShow;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2NhbXBhaWducy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiQ2FyZCIsIkxheW91dCIsIkNhbXBhaWduSW5zdGFuY2UiLCJDYW1wYWlnblNob3ciLCJzdGF0ZSIsInByb3BzIiwiYmFsYW5jZSIsIm1hbmFnZXIiLCJtaW5pbXVtQ29udHJpYnV0aW9uIiwiY29udHJpYnV0b3JzQ291bnQiLCJpdGVtcyIsImhlYWRlciIsIm1ldGEiLCJkZXNjcmlwdGlvbiIsInN0eWxlIiwib3ZlcmZsb3dXcmFwIiwicmVuZGVyQ2FyZHMiLCJjYW1wYWlnbiIsInF1ZXJ5IiwiYWRkcmVzcyIsIm1ldGhvZHMiLCJnZXRTdW1tYXJ5IiwiY2FsbCIsInN1bW1hcnkiLCJyZXF1ZXN0Q291bnQiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPLEFBQVM7Ozs7QUFDaEIsQUFBUzs7QUFDVCxBQUFPLEFBQVk7Ozs7QUFDbkIsQUFBTyxBQUFzQjs7Ozs7Ozs7O0ksQUFFdkI7Ozs7Ozs7Ozs7Ozs7O3dOLEFBQ0osUSxBQUFROzs7OztrQ0FjTTttQkFNUixLQU5RLEFBTUg7VUFORyxBQUVWLGlCQUZVLEFBRVY7VUFGVSxBQUdWLGlCQUhVLEFBR1Y7VUFIVSxBQUlWLDZCQUpVLEFBSVY7VUFKVSxBQUtWLDJCQUxVLEFBS1YsQUFHRjs7VUFBTTtnQkFDSixBQUNVLEFBQ1I7Y0FGRixBQUVRLEFBQ047cUJBSEYsQUFHZSxBQUNiO2VBQU8sRUFBRSxjQUxiLEFBQWMsQUFDWixBQUlTLEFBQWdCLEFBSTNCO0FBUkUsQUFDRSxPQUZVOzsyQ0FTUCxBQUFDLHNCQUFELEFBQU0sU0FBTSxPQUFaLEFBQW1CO29CQUFuQjtzQkFBUCxBQUFPLEFBQ1I7QUFEUTtPQUFBOzs7OzZCQUdBLEFBQ1A7NkJBQ0UsQUFBQzs7b0JBQUQ7c0JBQUEsQUFDRTtBQURGO0FBQUEsT0FBQSxrQkFDRSxjQUFBOztvQkFBQTtzQkFBQTtBQUFBO0FBQUEsU0FERixBQUNFLEFBQ0Msd0JBSEwsQUFDRSxBQUVHLEFBQUssQUFHWDs7Ozs7NEcsQUF4QzRCOzs7OzttQkFDckI7QSwyQkFBVyx3QkFBaUIsTUFBQSxBQUFNLE0sQUFBdkIsQUFBNkI7O3VCQUN4QixTQUFBLEFBQVMsUUFBVCxBQUFpQixhLEFBQWpCLEFBQThCOzttQkFBOUM7QTs7dUNBR2lCLFFBRGhCLEFBQ2dCLEFBQVEsQUFDN0I7MkJBQVMsUUFGSixBQUVJLEFBQVEsQUFDakI7Z0NBQWMsUUFIVCxBQUdTLEFBQVEsQUFDdEI7cUNBQW1CLFFBSmQsQUFJYyxBQUFRLEFBQzNCOzJCQUFTLFEsQUFMSixBQUtJLEFBQVE7QUFMWixBQUNMOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBc0NOLEEsQUE3QzJCOztrQkE2QzNCLEFBQWUiLCJmaWxlIjoic2hvdy5qcz9lbnRyeSIsInNvdXJjZVJvb3QiOiIvVXNlcnMva2hpZ2E2MTkvU2l0ZXMvdWRlbXkva2lja3N0YXJ0In0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2NhbXBhaWducy9zaG93LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiQ2FyZCIsIkdyaWQiLCJMYXlvdXQiLCJDYW1wYWlnbkluc3RhbmNlIiwid2ViMyIsIkNvbnRyaWJ1dGVGb3JtIiwiQ2FtcGFpZ25TaG93Iiwic3RhdGUiLCJwcm9wcyIsImJhbGFuY2UiLCJtYW5hZ2VyIiwibWluaW11bUNvbnRyaWJ1dGlvbiIsImNvbnRyaWJ1dG9yc0NvdW50IiwicmVxdWVzdHNDb3VudCIsIml0ZW1zIiwiaGVhZGVyIiwibWV0YSIsImRlc2NyaXB0aW9uIiwic3R5bGUiLCJvdmVyZmxvd1dyYXAiLCJ1dGlscyIsImZyb21XZWkiLCJyZW5kZXJDYXJkcyIsImNhbXBhaWduIiwicXVlcnkiLCJhZGRyZXNzIiwibWV0aG9kcyIsImdldFN1bW1hcnkiLCJjYWxsIiwic3VtbWFyeSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLEFBQU8sQUFBUzs7OztBQUNoQixBQUFTLEFBQU07O0FBQ2YsQUFBTyxBQUFZOzs7O0FBQ25CLEFBQU8sQUFBc0I7Ozs7QUFDN0IsQUFBTyxBQUFVOzs7O0FBQ2pCLEFBQU8sQUFBb0I7Ozs7Ozs7OztJLEFBRXJCOzs7Ozs7Ozs7Ozs7Ozt3TixBQUNKLFEsQUFBUTs7Ozs7a0NBY007bUJBT1IsS0FQUSxBQU9IO1VBUEcsQUFFVixpQkFGVSxBQUVWO1VBRlUsQUFHVixpQkFIVSxBQUdWO1VBSFUsQUFJViw2QkFKVSxBQUlWO1VBSlUsQUFLViwyQkFMVSxBQUtWO1VBTFUsQUFNVix1QkFOVSxBQU1WLEFBR0Y7O1VBQU07Z0JBQ0osQUFDVSxBQUNSO2NBRkYsQUFFUSxBQUNOO3FCQUhGLEFBR2UsQUFDYjtlQUFPLEVBQUUsY0FMQyxBQUNaLEFBSVMsQUFBZ0I7QUFKekIsQUFDRSxPQUZVO2dCQU9aLEFBQ1UsQUFDUjtjQUZGLEFBRVEsQUFDTjtxQkFWVSxBQU9aLEFBR2U7QUFIZixBQUNFO2dCQUlGLEFBQ1UsQUFDUjtjQUZGLEFBRVEsQUFDTjtxQkFmVSxBQVlaLEFBR2U7QUFIZixBQUNFO2dCQUlGLEFBQ1UsQUFDUjtjQUZGLEFBRVEsQUFDTjtxQkFwQlUsQUFpQlosQUFHZTtBQUhmLEFBQ0U7Z0JBS1EsY0FBQSxBQUFLLE1BQUwsQUFBVyxRQUFYLEFBQW1CLFNBRDdCLEFBQ1UsQUFBNEIsQUFDcEM7Y0FGRixBQUVRLEFBQ047cUJBekJKLEFBQWMsQUFzQlosQUFHZSxBQUlqQjtBQVBFLEFBQ0U7OzJDQU1HLEFBQUMsc0JBQUQsQUFBTSxTQUFNLE9BQVosQUFBbUI7b0JBQW5CO3NCQUFQLEFBQU8sQUFDUjtBQURRO09BQUE7Ozs7NkJBR0EsQUFDUDs2QkFDRSxBQUFDOztvQkFBRDtzQkFBQSxBQUNFO0FBREY7QUFBQSxPQUFBLGtCQUNFLGNBQUE7O29CQUFBO3NCQUFBO0FBQUE7QUFBQSxTQURGLEFBQ0UsQUFDQSxtQ0FBQSxBQUFDOztvQkFBRDtzQkFBQSxBQUNJO0FBREo7QUFBQSx5QkFDSyxjQUFELHNCQUFBLEFBQU0sVUFBTyxPQUFiLEFBQW9CO29CQUFwQjtzQkFBQSxBQUNHO0FBREg7Y0FESixBQUNJLEFBQ0csQUFBSyxBQUdSLGdDQUFDLGNBQUQsc0JBQUEsQUFBTSxVQUFPLE9BQWIsQUFBb0I7b0JBQXBCO3NCQUFBLEFBQ0U7QUFERjt5QkFDRSxBQUFDOztvQkFBRDtzQkFUVixBQUNFLEFBRUUsQUFLSSxBQUNFLEFBS1g7QUFMVztBQUFBOzs7Ozs0RyxBQWhFaUI7Ozs7O21CQUNyQjtBLDJCQUFXLHdCQUFpQixNQUFBLEFBQU0sTSxBQUF2QixBQUE2Qjs7dUJBQ3hCLFNBQUEsQUFBUyxRQUFULEFBQWlCLGEsQUFBakIsQUFBOEI7O21CQUE5QztBOzt1Q0FHaUIsUUFEaEIsQUFDZ0IsQUFBUSxBQUM3QjsyQkFBUyxRQUZKLEFBRUksQUFBUSxBQUNqQjtpQ0FBZSxRQUhWLEFBR1UsQUFBUSxBQUN2QjtxQ0FBbUIsUUFKZCxBQUljLEFBQVEsQUFDM0I7MkJBQVMsUSxBQUxKLEFBS0ksQUFBUTtBQUxaLEFBQ0w7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QSxBQVBxQixBQTBFM0I7O2tCQUFBLEFBQWUiLCJmaWxlIjoic2hvdy5qcz9lbnRyeSIsInNvdXJjZVJvb3QiOiIvVXNlcnMva2hpZ2E2MTkvU2l0ZXMvdWRlbXkva2lja3N0YXJ0In0=

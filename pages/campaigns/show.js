@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Grid } from 'semantic-ui-react';
 import Layout from '../../components/Layout';
 import CampaignInstance from '../../ethereum/campaign';
+import web3 from '../../ethereum/web3';
+import ContributeForm from '../../components/ContributeForm';
 
 class CampaignShow extends Component {
   state = {  }
@@ -12,7 +14,7 @@ class CampaignShow extends Component {
     return { 
       minimumContribution: summary[0],
       balance: summary[1],
-      requestCount: summary[2],
+      requestsCount: summary[2],
       contributorsCount: summary[3],
       manager: summary[4]
     };
@@ -23,7 +25,8 @@ class CampaignShow extends Component {
       balance,
       manager,
       minimumContribution,
-      contributorsCount
+      contributorsCount,
+      requestsCount
     } = this.props;
 
     const items = [
@@ -32,6 +35,26 @@ class CampaignShow extends Component {
         meta: 'Address of Manager',
         description: 'The manager created this campaign and can create requests to withdraw money',
         style: { overflowWrap: 'break-word' }
+      },
+      {
+        header: minimumContribution,
+        meta: 'Minimum Contribution (wei)',
+        description: 'You must contribute at least this much wei to become a contributor',
+      },
+      {
+        header: requestsCount,
+        meta: 'Number of Requests',
+        description: 'A request tries to withdraw money from the contract. Requests must be approved by contributors.'
+      },
+      {
+        header: contributorsCount,
+        meta: 'Number of contributors',
+        description: 'Number of people who have already donated to this campaign'
+      },
+      {
+        header: web3.utils.fromWei(balance, 'ether'),
+        meta: 'Campaign Balance (ether)',
+        description: 'The balance is how much money this campaign has left to spend.'
       }
     ];
 
@@ -42,7 +65,15 @@ class CampaignShow extends Component {
     return (
       <Layout>
         <h3>Campaign Shows</h3>
-        {this.renderCards()}
+        <Grid>
+            <Grid.Column width={10}>
+              {this.renderCards()}
+            </Grid.Column>
+
+            <Grid.Column width={6}>
+              <ContributeForm />
+            </Grid.Column>
+        </Grid>
       </Layout>
     );
   }
