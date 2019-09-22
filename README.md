@@ -10,3 +10,8 @@ The purpose of this dapp is to keep the records if the donated money is used for
 - 
 
 ## The list of the tech stack used on the application
+- Solidity
+- web3.js
+- Next.js
+- Mocha
+- Semantic UI React
